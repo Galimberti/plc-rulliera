@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <DUT Name="ES_S1" Id="{b53ee3b2-7d25-4776-9e12-5ecb9c9d58f2}">
+    <Declaration><![CDATA[TYPE ES_S1 :
+	STRUCT
+		Alarm			:ES_ALARM;		
+				
+		SO2_actVal		:INT;
+		SO2_full		:BOOL;
+		SO2_fb			:FB_AnalogSensor_full;	
+
+			
+	END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

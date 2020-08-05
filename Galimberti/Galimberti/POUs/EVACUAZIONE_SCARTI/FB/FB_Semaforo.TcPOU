@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="FB_Semaforo" Id="{29b95473-734d-4818-9fec-b31c8f88d9dd}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Semaforo
+VAR_INPUT
+	bON			:BOOL;
+	sColore		:int;
+	bBlink		:BOOL;
+END_VAR
+VAR_OUTPUT
+	semaforo	:ES_SEMAFORO;
+END_VAR
+VAR
+	_tmrBlink	:ton;
+	_bAccesa	:BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+//1: BLU
+//2: VERDE
+//4: ROSSO
+//6: ARANCIO
+
+semaforo.analog0:= 0;
+semaforo.analog1:= 0;
+semaforo.analog2:= 0;
+semaforo.analog3:= 0;
+semaforo.analog4:= 0;
+semaforo.analog5:= 0;
+		
+IF bBlink THEN
+	_tmrBlink(IN:= bON, PT:=T#1000MS);
+	IF _tmrBlink.Q THEN
+		_tmrBlink(IN:= FALSE);
+		_bAccesa:= NOT _bAccesa;
+	END_IF
+ELSE
+	_bAccesa:=TRUE;
+END_IF
+		
+IF bON THEN
+
+	CASE sColore OF
+				
+	1: //BLU:
+		IF _bAccesa THEN
+			semaforo.analog1:= 1;
+		END_IF 
+		
+	2: //ROSSO:
+		IF _bAccesa THEN
+			semaforo.analog2:= 4;
+		END_IF
+		
+	3: //VERDE:
+		IF _bAccesa THEN
+			semaforo.analog3:= 2;
+		END_IF
+		
+	4: //ARANCIO:
+		IF _bAccesa THEN
+			semaforo.analog4:= 6;
+		END_IF
+				
+	
+	END_CASE
+
+
+END_IF
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_Semaforo">
+      <LineId Id="53" Count="0" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="54" Count="2" />
+      <LineId Id="77" Count="5" />
+      <LineId Id="76" Count="0" />
+      <LineId Id="83" Count="0" />
+      <LineId Id="143" Count="0" />
+      <LineId Id="122" Count="3" />
+      <LineId Id="119" Count="0" />
+      <LineId Id="144" Count="0" />
+      <LineId Id="84" Count="0" />
+      <LineId Id="145" Count="1" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="111" Count="0" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="112" Count="0" />
+      <LineId Id="60" Count="0" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="113" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="69" Count="0" />
+      <LineId Id="114" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="115" Count="0" />
+      <LineId Id="74" Count="0" />
+      <LineId Id="116" Count="0" />
+      <LineId Id="100" Count="1" />
+      <LineId Id="117" Count="0" />
+      <LineId Id="102" Count="0" />
+      <LineId Id="118" Count="0" />
+      <LineId Id="75" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="104" Count="0" />
+      <LineId Id="108" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

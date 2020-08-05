@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <DUT Name="dut_Dati_Pezzo" Id="{7d16b81a-26cf-46a3-b826-bd011ce532c6}">
+    <Declaration><![CDATA[TYPE dut_Dati_Pezzo :
+STRUCT
+	
+	Busy				:BOOL;
+	Rotazione			:INT;   //99=no rotazione - 1=rot. avanti - 2=rot. indietro - 3=doppia rotazione
+	Larghezza			:REAL;
+	Altezza				:REAL;
+	Lunghezza			:REAL;
+	Lato_Scarico		:INT;	//1=destra - 2=sinistra
+	Nr_Ricetta			:INT;
+
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

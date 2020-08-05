@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <GVL Name="GVL_ES_IO" Id="{5acd17b3-6b85-40cd-9e07-7026c6f21ea1}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+
+	glo_ES_VERSION			:STRING:='10.3.0.0';
+
+
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+
+	//Quadro HQ3
+	glo_dig_in_HQ3			AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_HQ3			AT %Q*:ARRAY[1..64] OF BOOL;
+	glo_WcState_HQ3			AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_HQ3			AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	
+	
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+
+	//Quadro HQ1	
+	glo_dig_in_HQ1			AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_HQ1			AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_analog_in_HQ1		AT %I*:ARRAY[1..64] OF INT;
+	glo_WcState_HQ1			AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_HQ1			AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+		
+	//TERM7 EL1008 HQ1
+	SensInMac				:BOOL;		//DIGIN CH1			Sensore ingresso macinatore
+	R5_S2					:BOOL;		//DIGIN CH2			Val1 aperta
+	T5_S3					:BOOL;		//DIGIN CH3			Val2 chiusa
+	S1_S3					:BOOL;		//DIGIN CH4			Allarme silos1 pieno
+	T6_S1					:BOOL;		//DIGIN CH5			Rotaz catena IFS289
+	HQ1_Auto_ON				:BOOL;		//DIGIN CH6			Modo auto-man
+	HQ1_P1					:BOOL;		//DIGIN CH7			Reset Allarme
+	HQ1_K1					:BOOL;		//DIGIN CH8			---
+	
+	//TERM8 EL1008 HQ1
+	HQ1_MacinatoreON		:BOOL;		//DIGIN CH1 		DA QUADRO MACINATORE
+	HQ1_ScorniciatriceON	:BOOL;		//DIGIN CH9 		DA QUADRO SILOS 1
+	HQ1_AspirazioneON		:BOOL; 		//DIGIN CH10		DA QUADRO SILOS 1
+	I_Fdbk_Km_Area_Nastri_Macinatore : BOOL;
+	I_Fdbk_Km_Area_Macinatore:BOOL;		//DIGIN CH11 		feedback contattore area macinatore
+	HQ1_BricchettatriceON	:BOOL;		//DIGIN CH6
+	
+	//TERM9 EL2008 HQ1
+//	S1_U1					:BOOL;		//DIGOUT CH1		Valvola aria pulizia ingresso M12
+	Dis_Scarico_Hundegger	:BOOL;		//DIGOUT CH1		abilitazione scarico Hundegger	
+	HQ1_T1_KA1				:BOOL;		//DIGOUT CH2		T1 Vibrotrasp buca
+	HQ1_T2_KA2				:BOOL;		//DIGOUT CH3		T2 Nastro elev buca
+	HQ1_T3_KA3				:BOOL;		//DIGOUT CH4		T3 Vibrotrasp macinatore
+	HQ1_T5M2_A_KA4			:BOOL;		//DIGOUT CH5		Apre scarico trasp orizz
+	HQ1_T5_KA5				:BOOL;		//DIGOUT CH6		Trasp elevat a parete
+	HQ1_T6_KA6				:BOOL;		//DIGOUT CH7		Trasp orizza a parete
+	HQ1_T5M2_C_KA7			:BOOL;		//DIGOUT CH8		Chiude scarico trasp orizz
+		
+	//TERM10 EL2008 HQ1
+	HQ1_T7_A_KA8			:BOOL;		//DIGOUT CH1		Caricatore macinat Avanti
+	HQ1_T7_I_KA9			:BOOL;		//DIGOUT CH2		Caricatore macinat Indietro
+	HQ1_M_ON				:BOOL;		//DIGOUT CH3		Macinatore ON
+	HQ1_M_OFF				:BOOL;		//DIGOUT CH4		Macinatore OFF		
+	HQ1_T4_KA4				:BOOL;		//DIGOUT CH5		T4 Trasportatore da silos a macinatore
+	HQ1_S1_ValvolaStellare	:BOOL;		//DIGOUT CH6		Valvola stellare silos 1: AVVIATO DA QUADRO SILOS
+	HQ1_RaclaON				:BOOL;		//DIGOUT CH7		Racia :AVVIATO DA QUADRO SILOS
+	HQ1_BrichettatriceON	:BOOL;		//DIGOUT CH8		Brichettatrice:AVVIATA DA QUADRO SILOS
+
+	//TERM11 EL3012 HQ1
+	T3_S1					:INT;		//ANALOGIN CH1		Pres materiale Ingresso a T3
+	T3_S2					:INT;		//ANALOGIN CH2		Pres materiale Uscita da T3
+	
+	//TERM12 EL3012 HQ1
+	S2_S1					:INT;		//ANALOGIN CH1		Liv silos2 UMT 30-6000
+	
+	//BARRIERA MACINATORE
+	I_Barriera_Macinatore	: BOOL;
+	
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	
+	S1_S1					:BOOL;
+	S1_S2					:BOOL;		//QUADRO SILOS1		Sensore dig. troppopieno
+	
+	
+	
+	
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	
+	//CIABATTA MCS1
+	glo_dig_in_MCS1			AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_MCS1		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_analog_in_MCS1		AT %I*:ARRAY[1..64] OF INT;	
+	glo_analog_out_MCS1		AT %Q*:ARRAY[1..64] OF USINT;	
+	glo_WcState_MCS1		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_MCS1			AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_MCS1		AT %I*:ARRAY[1..64] OF USINT;	//3:OP
+	
+	//BOX16 EP6228-0022 MCS1
+	T1_SO1					:INT;		//IOLINK CH1		Pres mat T1, da inizio vibro fino sopra nastro  O1D120
+	
+	
+	
+	
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	
+	//CIABATTA T3C01
+	glo_dig_in_T3C01		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_T3C01		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_analog_in_T3C01		AT %I*:ARRAY[1..64] OF INT;	
+	glo_analog_out_T3C01	AT %Q*:ARRAY[1..64] OF USINT;	
+	glo_WcState_T3C01		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_T3C01			AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_T3C01		AT %I*:ARRAY[1..64] OF USINT;	//3:OP
+
+	//BOX17 EP6228-0022 T3C01
+	S1_SO2					:INT;			//IOLINK CH2		LIV AVVIO VALV STELLARE UGT514
+	S1_PO1					:ES_S1PO1;		//IOLINK CH3		PULSANTIERA BNI005N
+	M_PO1					:ES_MPO1;		//IOLINK CH4		PULSANTIERA BNI005M
+	S1_Se1					:ES_SEMAFORO;	//IOLINK CH5		SEMAFORO DV2530
+	M_Se1					:INT;			//IOLINK CH6		SEMAFORO DV2530	
+	T5_S1					:BOOL;			//DIGIN  CH7		ROTAZ CATENA IFS289
+	T5_SO1					:INT;			//IOLINK CH8		LIV SCARICO MAC UGT525
+	I_Pls_Start_Vibro_Hdd	:BOOL;
+	
+	
+	
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+
+	//TWINSAFE
+	TS_ErrAck				AT %Q*:BOOL;	//ERRORE ACK
+	TS_Run_GrpES			AT %Q*:BOOL;	//RUN Gruppo TwinSAFE EVACUAZIONE SCARTI
+	TS_ComErr				AT %I*:BOOL;
+	TS_FBErr				AT %I*:BOOL;
+	
+	TS_AreaM_ON				AT %I*:BOOL;	//STATO AREA MACINATORE
+	TS_MPO1_Rst_Area_Macinatore	AT %Q*:BOOL;	//RESET AREA MACINATORE
+
+
+	TS_AreaS_ON				AT %I*:BOOL;	//STATO AREA SILOS
+	TS_S1PO1_btn_Emerg		AT %I*:BOOL;	//STATO FUNGO EMERGENZA da TWINSAFE
+	TS_S1PO1_btn_R			AT %Q*:BOOL;	//STATO BOTTONE RIARMO a TWINSAFE
+	TS_S1PR1_Door			AT %I*:BOOL;	//STATO PORTA MACINATORE da TWINSAFE
+	
+	TS_AreaM_OFF				AT %I*:BOOL;	
+	TS_AreaS_OFF				AT %I*:BOOL;	
+	
+
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	
+	//Timer per sensore T5_S1 rotazione catena
+	tmr_T5_S1				:TON;
+	
+	//Logica Aspirazione ON
+	LogicaAspirazioneON		:BOOL;		
+	
+	//HMI - VALORI ATTUALI
+	glo_ES_ActVal			:ES_ACTVAL;
+	
+	//Persistenti - NOVRAM
+	glo_ES_Config			AT %Q*:ES_PERSISTENT;
+
+	
+	
+	//AREA MACINATORE	
+	
+	//HMI - BOTTONI
+	bAbilitaPulsatiera		:BOOL;
+	AreaM_ON				:BOOL;
+	bIsAuto					:BOOL;	
+	
+	bAbilitaT1T2			:BOOL;
+	bAbilitaT3				:BOOL;
+	bAbilitaT4				:BOOL;
+	
+	bT1_ON					:BOOL;
+	bT2_ON					:BOOL;
+	bT3_ON					:BOOL;	
+	bM_ON					:BOOL;
+	bT4_ON					:BOOL;
+	bMacinatoreStart		:BOOL;
+	bMacinatoreStop			:BOOL;
+	bT3T5T6DelayStart		:BOOL;
+	
+	tT3ON_auto				:INT;		//s
+
+	stepT1T2				:INT;
+	stepT3					:INT;
+	stepT4					:INT;
+
+	descT1T2				:STRING;
+	descT3					:STRING;
+	descT4					:STRING;
+		
+	bSIMULAAuto_ON			:BOOL;	
+	bSIMULA_out				:BOOL;
+	bSIMULA_in				:BOOL;
+	bSIMULA_btnM			:BOOL;
+	bSIMULA_btnR			:BOOL;
+	bSIMULA_btn0			:BOOL;
+	bSIMULA_btnT3			:BOOL;
+	
+	bMAN_SvuotaT1T2T3		:BOOL;
+	
+	T3_ModoPausaLavoro	:BOOL;
+	bT3EnT1PausaLavoro	:BOOL;
+	bT3EnT2PausaLavoro	:BOOL;
+	M_Cmd_T3			:BOOL;
+	T3_Lavoro			:BOOL;
+	
+	M_Start_Macinatore_Loc:BOOL;
+	
+	
+	
+	//AREA SILOS
+	AreaS_ON				:BOOL;
+	bSIMULA_BrichettatriceON:BOOL;
+	bAbilitaPulsatieraS1PO1	:BOOL;
+	bSIMULA_btn0silos		:BOOL;
+	bSIMULA_btnRsilos		:BOOL;
+		
+	S1SO2maxTimeavg			:INT:=10;
+	T3S1maxTimeavg			:INT:=2;
+	T3S2maxTimeavg			:INT:=2;
+	T1SO1maxTimeavg			:INT:=2;
+
+	bMAN_SvuotaS1T4			:BOOL;
+		
+	bAlarmReset				:BOOL;	
+	bAllarmeT3				:BOOL;
+	bAllarmeT5				:BOOL;
+	bAllarmeT6				:BOOL;
+	bAllarmeS2S1			:BOOL;
+	bAllarmeT5enable		:BOOL;
+	bAllarmeT6enable		:BOOL;
+	bAllarmeS2S1enable		:BOOL;
+	
+	bT1SO1pieno				:BOOL;
+	bT3S1pieno				:BOOL;
+	bT3S2pieno				:BOOL;
+	bS1SO2pieno				:BOOL;
+	bS2S1pieno				:BOOL;
+	
+	altMatT3S1				:INT;
+	altMatT3S2				:INT;
+	altMatS1SO2				:INT;
+	distMatT1SO1			:INT;
+	
+	glo_ES_ActVal_T1_SO1	:INT;
+	sogliaT3S1				:INT;
+	sogliaT3S2				:INT;
+	sogliaS1SO2				:INT;
+	solgiaT1SO1				:INT;
+	sogliaS2S1				:INT;
+	
+END_VAR
+
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

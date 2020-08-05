@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
+  <DUT Name="ES_SEMAFORO" Id="{4a3a7f55-bd9d-4c72-816f-9cb8499e9f0d}">
+    <Declaration><![CDATA[TYPE ES_SEMAFORO :
+	STRUCT		
+		analog0			AT%Q*:USINT;			
+		analog1			AT%Q*:USINT;				
+		analog2			AT%Q*:USINT;		
+		analog3			AT%Q*:USINT;		
+		analog4			AT%Q*:USINT;		
+		analog5			AT%Q*:USINT;
+	END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="FB_In_Position" Id="{6e4e3c5c-8966-4f05-adb8-d562d3f6bed8}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_In_Position
+VAR_INPUT
+	Act_Position	:LREAL;
+	Target_Position	:LREAL;	
+	Toll_Window		:LREAL;
+END_VAR
+VAR_OUTPUT
+	Axe_In_Pos		:BOOL;
+
+END_VAR
+VAR
+	_pos_window		:LREAL;
+	_neg_window		:LREAL;
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+_pos_window := Target_Position + Toll_Window;
+_neg_window := Target_Position - Toll_Window;
+
+IF (Act_Position >= _neg_window) AND  (Act_Position <= _pos_window) THEN
+	Axe_In_Pos := TRUE;
+ELSE
+	Axe_In_Pos:=FALSE;
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_In_Position">
+      <LineId Id="66" Count="1" />
+      <LineId Id="93" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="20" Count="1" />
+      <LineId Id="69" Count="1" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="46" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

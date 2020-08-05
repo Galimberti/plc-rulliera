@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <DUT Name="ES_ACTVAL" Id="{51c3b2b4-1a30-45b1-996b-97b6fb56f078}">
+    <Declaration><![CDATA[TYPE ES_ACTVAL :
+	STRUCT	
+		
+		//SENSORI
+		T3_S1			:INT;	
+		T3_S2		 	:INT;	
+		S2_S1		 	:INT;
+		S1_S02			:INT;	
+		T1_S01			:BOOL;
+
+		//STATI		
+		PuliziaT1T2_ON			:BOOL;		//STO PULENDO T1 T2 SERVE PER FAR PARTIRE T3
+			
+	END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

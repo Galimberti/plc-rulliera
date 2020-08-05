@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <DUT Name="ES_MPO1" Id="{03148d83-2cd5-4d0f-9c80-ec427825234c}">
+    <Declaration><![CDATA[TYPE ES_MPO1 :
+	STRUCT
+		key						:BOOL;	//CHIAVE INSERITA E SU ON
+		btn_M_MacOn				:BOOL;	//AVVIO MANUALE MACINATORE
+		btn_R_Riarmo			:BOOL;	//area m armata e ready
+		btn_0_AreaMoff			:BOOL;	//SPEGNIMENTO UTENZE PULSANTIERA MP01
+		btn_Fsx_T3StartMan		:BOOL;	//AVVIO T3 MANUALE
+		btn_Fsx_T4StartMan		:BOOL;	//AVVIO T4 MANUALE
+		btn_Fup_T7Avanti		:BOOL;	//AVVIO T7 MANUALE SALITA
+		btn_Fdw_T7Indietro		:BOOL;	//AVVIO T7 MANUALE DISCESA
+		led_M_MacOn				:BOOL;	//led pulsante AVVIO MANUALE MACINATORE
+		led_R_Riarmo			:BOOL;	//led pulsante area m armata e ready
+		led_0_AreaMoff			:BOOL;	//led pulsante SPEGNIMENTO UTENZE PULSANTIERA MP01
+	END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

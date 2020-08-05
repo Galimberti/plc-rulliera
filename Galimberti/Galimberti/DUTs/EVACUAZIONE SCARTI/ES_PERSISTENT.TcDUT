@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <DUT Name="ES_PERSISTENT" Id="{62211b96-fba7-4130-ad0f-0ff680cdd1a5}">
+    <Declaration><![CDATA[TYPE ES_PERSISTENT :
+	STRUCT
+		
+		T1_SO1_distanzaAVuoto	:INT:= 6150;
+		T1_SO1_valSoglia		:INT:= 1000;
+ 
+		T3_S1_maxScaleBit		:INT:= 32767; 
+		T3_S1_maxScaleIng		:INT:= 1300; 
+		T3_S1_deltaLowLimit		:INT:= 30;
+		T3_S1_distanzaAVuoto	:INT:= 1230;
+		T3_S1_valSoglia			:INT:= 200; 
+
+		T3_S2_maxScaleBit       :INT:= 32767; 
+		T3_S2_maxScaleIng		:INT:= 1300; 
+		T3_S2_deltaLowLimit		:INT:= 30;
+		T3_S2_distanzaAVuoto	:INT:= 590;
+		T3_S2_valSoglia			:INT:= 200; 
+	
+		S2_S1_maxScaleBit       :INT:= 32767; 
+		S2_S1_maxScaleIng		:INT:= 6000; 
+		S2_S1_deltaLowLimit		:INT:= 30; 
+		S2_S1_distanzaAVuoto	:INT:= 6000;
+		S2_S1_valSoglia			:INT:= 2000; 
+
+		S1_SO2_maxScaleBit      :INT:= 32767; 
+		S1_SO2_maxScaleIng		:INT:= 6000; 
+		S1_SO2_deltaLowLimit	:INT:= 30; 
+		S1_SO2_distanzaAVuoto	:INT:= 6150;
+		S1_SO2_valSoglia		:INT:= 1000; 
+		S1_SO2_filtertime		:INT:= 10;	
+
+		T1_Time					:INT:= 5;		//TEMPO SVUOTA T1
+		T2_Time					:INT:= 7;		//TEMPO SVUOTA T2
+		T3_Time					:INT:= 25;		//TEMPO SVUOTA T3	
+	
+	END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="MAIN_RCT" Id="{9137ec8f-ca65-46e8-8263-25de0e63dc7a}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN_RCT
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+RULLI_CENTRO_TAGLI();
+]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN_RCT">
+      <LineId Id="6" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

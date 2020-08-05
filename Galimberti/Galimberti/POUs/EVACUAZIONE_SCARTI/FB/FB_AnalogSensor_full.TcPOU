@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="FB_AnalogSensor_full" Id="{01cab774-f576-4878-a10f-dc30a7c8f7b3}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_AnalogSensor_full
+VAR_INPUT
+	lettura			:INT;
+	maxScaleBit		:INT;
+	maxScaleIng		:INT;
+	deltaLowLimit	:INT;
+	distanzaAVuoto	:INT;
+	valSoglia		:INT;
+	filterTime		:INT;		//seconds
+END_VAR
+VAR_OUTPUT
+	full			:BOOL;
+	actualVal		:INT;
+END_VAR
+VAR
+	_actVal			:INT;
+	_tmr			:TON;
+	_over			:BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+_actVal := ((lettura*maxScaleIng)/maxScaleBit) - deltaLowLimit;
+actualVal:=_actVal ;
+IF distanzaAVuoto - _actVal > valSoglia THEN
+	_over := TRUE;
+ELSE
+	full:=FALSE;
+END_IF
+
+_tmr(IN:=_over, PT:=INT_TO_TIME(filterTime*1000));
+IF _tmr.Q THEN
+	_over:=FALSE;
+	full:=TRUE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="FB_AnalogSensor_full">
+      <LineId Id="66" Count="1" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="20" Count="1" />
+      <LineId Id="69" Count="1" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="72" Count="0" />
+      <LineId Id="45" Count="1" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

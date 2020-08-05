@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="fun_AreaM_SPEGNITUTTO" Id="{35fdccf8-d760-4663-b4ef-f1804d1ac664}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION fun_AreaM_SPEGNITUTTO : FB_Semaforo
+VAR_INPUT
+END_VAR
+VAR
+	bT3EnTPausaLavoro: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+//bit di COMANDO (cmd nellinterfaccia)
+bT1_ON:=FALSE;
+bT2_ON:=FALSE;
+bT3_ON:=FALSE;
+T3_ModoPausaLavoro:=FALSE;
+bT3EnT1PausaLavoro:=FALSE;
+bT3EnT2PausaLavoro:=FALSE;
+T3_Lavoro :=FALSE;	
+M_Start_Macinatore_Loc := FALSE;
+bT4_ON:=FALSE;
+bM_ON:=FALSE;
+
+
+bMacinatoreStop:=TRUE;
+bMacinatoreStart:=FALSE;
+bT3T5T6DelayStart:=FALSE;
+
+//uscite finali
+HQ1_T1_KA1:=FALSE;
+HQ1_T2_KA2:=FALSE;
+HQ1_T3_KA3:=FALSE;
+HQ1_T4_KA4:=FALSE;
+HQ1_T5_KA5:=FALSE;
+HQ1_T6_KA6:=FALSE;
+
+//macchine a stati
+stepT1T2:=100;
+stepT3:=100;
+stepT4:=100;
+descT1T2:='T1-T2 disabilitati';
+descT3:='T3 disabilitati';
+descT4:='T4 disabilitati';
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="fun_AreaM_SPEGNITUTTO">
+      <LineId Id="43" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="69" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="68" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="77" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="76" Count="0" />
+      <LineId Id="29" Count="1" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="18" Count="1" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="40" Count="2" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="57" Count="2" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="15" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

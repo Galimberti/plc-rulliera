@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="FB_MMSensor_full" Id="{3e95e641-4c97-4606-bdf8-2bce40853b16}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_MMSensor_full
+VAR_INPUT
+		lettura			:INT;
+		distanzaAVuoto	:INT; 
+		valSoglia		:INT;
+		filterTime		:INT;		//seconds
+END_VAR
+VAR_OUTPUT
+		full			:BOOL;
+END_VAR
+VAR
+		_tmr			:TON;
+		_over			:BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+IF lettura < valSoglia THEN
+	_over := TRUE;
+ELSE
+	_over:=FALSE;
+	full:=FALSE;
+END_IF
+
+_tmr(IN:=_over, PT:=INT_TO_TIME(filterTime*1000));
+IF _tmr.Q THEN
+	_over:=FALSE;
+	full:=TRUE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="FB_MMSensor_full">
+      <LineId Id="17" Count="4" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="24" Count="4" />
+      <LineId Id="23" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

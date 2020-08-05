@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <DUT Name="ES_S1PO1" Id="{29c90ce1-99f7-4f3c-b5a0-299c01abe07b}">
+    <Declaration><![CDATA[TYPE ES_S1PO1 :
+	STRUCT
+		key						:BOOL;	//CHIAVE INSERITA E SU ON
+		btn_R_Riarmo			:BOOL;	//area m armata e ready	
+		btn_0_AreaMoff			:BOOL;	//SPEGNIMENTO UTENZE PULSANTIERA S1P01
+		led_R_Riarmo			:BOOL;	//led pulsante area m armata e ready	
+		led_0_AreaMoff			:BOOL;	//led pulsante SPEGNIMENTO UTENZE PULSANTIERA S1P01
+	
+	END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

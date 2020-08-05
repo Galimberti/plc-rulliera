@@ -1,0 +1,827 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <GVL Name="GVL_CT_IO" Id="{310ed119-c319-4df9-87a0-13dba7d166f8}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+	
+(*****************************************************************)	
+//				counicazione Valmec
+	Com_delta_1			AT %IW10: INT;
+	I_Act_Larghezza_Trave_R1		:INT;
+
+
+(*****************************************************************)	
+	//IO TERMINALE 40 C1CO1
+	glo_dig_in_Term_40		AT %I*:ARRAY[1..64] OF BOOL;
+
+	I_Fdbk1_Km_Eme_Zona_1		:BOOL;
+	I_Fdbk2_Km_Eme_Zona_1		:BOOL;
+	
+	I_Fdbk1_Km_Eme_Zona_2		:BOOL;
+	I_Fdbk2_Km_Eme_Zona_2		:BOOL;
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//CIABATTA C1CO1
+	glo_dig_in_C1CO1		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C1CO1		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_WcState_C1C01		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C1C01 		AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_C1C01		AT %I*:ARRAY[1..64] OF USINT;	//3:OP
+
+		
+	C1CO1_Ev1_Soffio_Px				:BOOL;			//DIGOUT CH0			ev soffio sensori catenaria 1
+	C1CO1_Ev2_Soffio_Px				:BOOL;			//DIGOUT CH1			ev soffio sensori catenaria 1
+	C1CO1_Ev3_Soffio_Px				:BOOL;			//DIGOUT CH2			ev soffio sensori catenaria 1
+	C1CO1_Ventola_Motore_C1M3_Rotaz_C1:BOOL;		//DIGOUT CH3			ventola motore
+	
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//CIABATTA C1CO2
+	glo_dig_in_C1CO2		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C1CO2		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_WcState_C1C02		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C1C02 		AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_C1C02		AT %I*:ARRAY[1..64] OF USINT;	//3:OP
+
+		
+	C1CO2_Ventola_C1M1_Solleva_C1				:BOOL;			//DIGOUT CH0			ev venbtola raffreddamento
+	C1CO2_Ventola_C1M2_Ribalta_C1				:BOOL;			//DIGOUT CH1			ev venbtola raffreddamento
+
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//CIABATTA C1CD1
+	glo_dig_in_C1CD1		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C1CD1		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_analog_in_C1CD1		AT %I*:ARRAY[1..64] OF INT;	
+	glo_analog_out_C1CD1	AT %Q*:ARRAY[1..64] OF USINT;	
+	glo_WcState_C1CD1		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C1CD1 		AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_C1CD1		AT %I*:ARRAY[1..64] OF USINT;	//3:OP
+
+		
+	C1_Ftc1_Fila4_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C1_Ftc2_Fila4_Presenza		:BOOL;		//DIGIN CH1			fotocellula presenza trave
+	C1_Ftc3_Fila4_Presenza		:BOOL;		//DIGIN CH2			fotocellula presenza trave
+	C1_Ftc1_Fila3_Presenza		:BOOL;		//DIGIN CH3			fotocellula presenza trave
+	C1_Ftc1_Fila1_Presenza		:BOOL;		//DIGIN CH4			fotocellula presenza trave
+	C1_Ftc1_Fila2_Presenza		:BOOL;		//DIGIN CH5			fotocellula presenza trave
+	C1_Ftc2_Fila1_Presenza		:BOOL;		//DIGIN CH6			fotocellula presenza trave
+	C1_Ftc2_Fila3_Presenza		:BOOL;		//DIGIN CH7			fotocellula presenza trave
+	
+	
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//CIABATTA C1CD2
+	glo_dig_in_C1CD2		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C1CD2		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_analog_in_C1CD2		AT %I*:ARRAY[1..64] OF INT;	
+	glo_analog_out_C1CD2	AT %Q*:ARRAY[1..64] OF USINT;	
+	glo_WcState_C1CD2		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C1CD2 		AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_C1CD2		AT %I*:ARRAY[1..64] OF USINT;	//3:OP
+
+	
+	C1_Ftc3_Fila1_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C1_Ftc3_Fila3_Presenza		:BOOL;		//DIGIN CH1			fotocellula presenza trave
+	C1_Ftc2_Fila2_Presenza		:BOOL;		//DIGIN CH2			fotocellula presenza trave
+	C1_Ftc4_Fila4_Presenza		:BOOL;		//DIGIN CH3			fotocellula presenza trave
+	C1_Ftc3_Fila2_Presenza		:BOOL;		//DIGIN CH4			fotocellula presenza trave
+	C1_Ftc5_Fila4_Presenza		:BOOL;		//DIGIN CH5			fotocellula presenza trave
+	C1_Ftc4_Fila3_Presenza		:BOOL;		//DIGIN CH6			fotocellula presenza trave
+	C1_Ftc4_Fila2_Presenza		:BOOL;		//DIGIN CH7			fotocellula presenza trave
+
+	
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//CIABATTA C1CD3
+	glo_dig_in_C1CD3		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C1CD3		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_analog_in_C1CD3		AT %I*:ARRAY[1..64] OF INT;	
+	glo_analog_out_C1CD3	AT %Q*:ARRAY[1..64] OF USINT;	
+	glo_WcState_C1CD3		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C1CD3 		AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_C1CD3		AT %I*:ARRAY[1..64] OF USINT;	//3:OP
+
+	
+	C1_Ftc7_Fila4_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C1_Ftc6_Fila1_Presenza		:BOOL;		//DIGIN CH1			fotocellula presenza trave
+	C1_Ftc6_Fila3_Presenza		:BOOL;		//DIGIN CH2			fotocellula presenza trave
+	C1_Ftc6_Fila2_Presenza		:BOOL;		//DIGIN CH3			fotocellula presenza trave
+	C1_Ftc6_Fila4_Presenza		:BOOL;		//DIGIN CH4			fotocellula presenza trave
+	C1_Ftc5_Fila3_Presenza		:BOOL;		//DIGIN CH5			fotocellula presenza trave
+	C1_Ftc5_Fila2_Presenza		:BOOL;		//DIGIN CH6			fotocellula presenza trave
+	C1_Ftc4_Fila1_Presenza		:BOOL;		//DIGIN CH7			fotocellula presenza trave		
+	
+
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//CIABATTA C1CD4
+	glo_dig_in_C1CD4		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C1CD4		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_analog_in_C1CD4		AT %I*:ARRAY[1..64] OF INT;	
+	glo_analog_out_C1CD4	AT %Q*:ARRAY[1..64] OF USINT;	
+	glo_WcState_C1CD4		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C1CD4 		AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_C1CD4		AT %I*:ARRAY[1..64] OF USINT;	//3:OP
+	
+	
+	
+	C1_Px_Catena_DW 		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C1_Px_Catena_UP 		:BOOL;		//DIGIN CH1			fotocellula presenza trave
+	C1_Px1_Rotaz_In_Piano  	:BOOL;		//DIGIN CH2			fotocellula presenza trave
+	C1_Px2_Rotaz_In_Piano	:BOOL;		//DIGIN CH3			fotocellula presenza trave
+	C1_Ftc5_Fila1_Presenza	:BOOL;		//DIGIN CH4			fotocellula presenza trave
+	C1_Ftc_Pres_Pz_Da_Hundegger : BOOL;	//DIGIN CH7			fotocellula pezzo in arrivo da Hundegger
+	
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//CIABATTA C2CD1
+	glo_dig_in_C2CD1		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C2CD1		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_analog_in_C2CD1		AT %I*:ARRAY[1..64] OF INT;	
+	glo_analog_out_C2CD1	AT %Q*:ARRAY[1..64] OF USINT;	
+	glo_WcState_C2CD1		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C2CD1 		AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_C2CD1		AT %I*:ARRAY[1..64] OF USINT;	//3:OP
+
+	
+	C2_Ftc1_Fila1_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C2_Ftc1_Fila2_Presenza		:BOOL;		//DIGIN CH1			fotocellula presenza trave
+	C2_Ftc1_Fila3_Presenza		:BOOL;		//DIGIN CH2			fotocellula presenza trave
+	C2_Ftc1_Fila4_Presenza		:BOOL;		//DIGIN CH3			fotocellula presenza trave
+	C2_Ftc2_Fila4_Presenza		:BOOL;		//DIGIN CH4			fotocellula presenza trave
+	C2_Ftc2_Fila3_Presenza		:BOOL;		//DIGIN CH5			fotocellula presenza trave
+	C2_Ftc2_Fila2_Presenza		:BOOL;		//DIGIN CH6			fotocellula presenza trave
+	C2_Ftc2_Fila1_Presenza		:BOOL;		//DIGIN CH7			fotocellula presenza trave	
+
+	
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//CIABATTA C2CD2
+	glo_dig_in_C2CD2		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C2CD2		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_analog_in_C2CD2		AT %I*:ARRAY[1..64] OF INT;	
+	glo_analog_out_C2CD2	AT %Q*:ARRAY[1..64] OF USINT;	
+	glo_WcState_C2CD2		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C2CD2 		AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_C2CD2		AT %I*:ARRAY[1..64] OF USINT;	//3:OP
+	
+	
+	C2_Ftc3_Fila4_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C2_Ftc3_Fila3_Presenza		:BOOL;		//DIGIN CH1			fotocellula presenza trave
+	C2_Ftc3_Fila2_Presenza		:BOOL;		//DIGIN CH2			fotocellula presenza trave
+	C2_Ftc3_Fila1_Presenza		:BOOL;		//DIGIN CH3			fotocellula presenza trave
+	C2_Ftc4_Fila4_Presenza		:BOOL;		//DIGIN CH4			fotocellula presenza trave
+	C2_Ftc4_Fila3_Presenza		:BOOL;		//DIGIN CH5			fotocellula presenza trave
+	C2_Ftc4_Fila2_Presenza		:BOOL;		//DIGIN CH6			fotocellula presenza trave
+	C2_Ftc4_Fila1_Presenza		:BOOL;		//DIGIN CH7			fotocellula presenza trave	
+	
+	
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//CIABATTA C2CD3
+	glo_dig_in_C2CD3		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C2CD3		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_analog_in_C2CD3		AT %I*:ARRAY[1..64] OF INT;	
+	glo_analog_out_C2CD3	AT %Q*:ARRAY[1..64] OF USINT;	
+	glo_WcState_C2CD3		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C2CD3 		AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_C2CD3		AT %I*:ARRAY[1..64] OF USINT;	//3:OP
+
+
+	C2_Ftc5_Fila4_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C2_Ftc5_Fila3_Presenza		:BOOL;		//DIGIN CH1			fotocellula presenza trave
+	C2_Ftc5_Fila2_Presenza		:BOOL;		//DIGIN CH2			fotocellula presenza trave
+	C2_Ftc5_Fila1_Presenza		:BOOL;		//DIGIN CH3			fotocellula presenza trave
+	C2_Ftc6_Fila4_Presenza		:BOOL;		//DIGIN CH4			fotocellula presenza trave
+	C2_Ftc6_Fila3_Presenza		:BOOL;		//DIGIN CH5			fotocellula presenza trave
+	C2_Ftc6_Fila2_Presenza		:BOOL;		//DIGIN CH6			fotocellula presenza trave
+	C2_Ftc6_Fila1_Presenza		:BOOL;		//DIGIN CH7			fotocellula presenza trave	
+	
+	
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//CIABATTA C2CD4
+	glo_dig_in_C2CD4		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C2CD4		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_analog_in_C2CD4		AT %I*:ARRAY[1..64] OF INT;	
+	glo_analog_out_C2CD4	AT %Q*:ARRAY[1..64] OF USINT;	
+	glo_WcState_C2CD4		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C2CD4 		AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_C2CD4		AT %I*:ARRAY[1..64] OF USINT;	//3:OP	
+	
+	
+	C2_Ftc7_Fila4_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C2_Ftc7_Fila3_Presenza		:BOOL;		//DIGIN CH1			fotocellula presenza trave
+	C2_Ftc7_Fila2_Presenza		:BOOL;		//DIGIN CH2			fotocellula presenza trave
+	C2_Ftc7_Fila1_Presenza		:BOOL;		//DIGIN CH3			fotocellula presenza trave
+	R1_Px_Rulliera_UP   		:BOOL;		//DIGIN CH4			proximity rulliera alta
+	R1_Px_Rulliera_DW			:BOOL;		//DIGIN CH5			proximity rulliera bassa
+		
+
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//CIABATTA C2CO1
+	glo_dig_in_C2CO1		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C2CO1		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_WcState_C2C01		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C2C01 		AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_C2C01		AT %I*:ARRAY[1..64] OF USINT;	//3:OP
+
+	C2CO1_Ev1_Soffio_Px				:BOOL;			//DIGOUT CH1			ev soffio sensori catenaria 2
+	C2CO1_Ev2_Soffio_Px				:BOOL;			//DIGOUT CH2			ev soffio sensori catenaria 2
+	C2CO1_Ev3_Soffio_Px				:BOOL;			//DIGOUT CH3			ev soffio sensori catenaria 2
+	C2CO1_Ventola_Motore_C2M1_Rotaz_C2:BOOL;			//DIGOUT CH4			ev venbtola raffreddamento
+	C2CO1_Ventola_R1M2_Rotaz_R2		:BOOL;			//DIGOUT CH5			ev venbtola raffreddamento
+
+		
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//CIABATTA C2CO2
+	glo_dig_in_C2CO2		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C2CO2		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_WcState_C2CO2		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C2CO2 		AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_C2CO2		AT %I*:ARRAY[1..64] OF USINT;	//3:OP	
+	
+	
+	
+	//PULSANTIERA C1P1
+	glo_dig_in_C1P1			AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C1P1		AT %Q*:ARRAY[1..64] OF BOOL;	
+
+	C1P1_Pls_Marcia		:BOOL;		//DIGIN CH1			pulsante marcia
+	C1P1_Rst_Eme		:BOOL;		//DIGIN CH2			pulsante ripristino emergenza
+
+	C1P1_Pls_C1_Fw		:BOOL;		//DIGIN CH3			pulsante comando discesa rulliera 1
+	C1P1_Pls_C1_Bk		:BOOL;		//DIGIN CH4			pulsante comando discesa rulliera 1
+	C1P1_Pls_C1_Dw		:BOOL;		//DIGIN CH5			pulsante comando discesa rulliera 1
+	C1P1_Pls_C1_Up		:BOOL;		//DIGIN CH6			pulsante comando salita rulliera 1
+	
+	C1P1_Pls_C1_Rot_Fw	:BOOL;		//DIGIN CH7			pulsante comando discesa rulliera 1
+	C1P1_Pls_C1_Rot_Bk	:BOOL;		//DIGIN CH8			pulsante comando salita rulliera 1
+	
+	C1P1_Lp_Eme_Ok		:BOOL;		//DIGOUT CH9		pulsante comando salita rulliera 1
+	C1P1_Lp_Marcia_On	:BOOL;		//DIGOUT CH10		pulsante comando salita rulliera 1
+
+	
+	//PULSANTIERA R1P1
+	glo_dig_in_R1P1			AT %I*:ARRAY[1..64] OF BOOL;	
+	glo_dig_out_R1P1		AT %Q*:ARRAY[1..64] OF BOOL;	
+
+	R1P1_Sel_Chiave		:BOOL;		//DIGIN CH1			selettore a chiave
+	R1P1_Pls_Marcia		:BOOL;		//DIGIN CH2			pulsante marcia
+	R1P1_Rst_Eme		:BOOL;		//DIGIN CH3			pulsante ripristino emergenza
+
+	R1P1_Pls_C2_Fw		:BOOL;		//DIGIN CH4			pulsante comando discesa rulliera 1
+	R1P1_Pls_C2_Bk		:BOOL;		//DIGIN CH5			pulsante comando discesa rulliera 1
+
+	R1P1_Pls_R1_Fw		:BOOL;		//DIGIN CH6			pulsante comando discesa rulliera 1
+	R1P1_Pls_R1_Bk		:BOOL;		//DIGIN CH7			pulsante comando discesa rulliera 1
+	R1P1_Pls_R1_Dw		:BOOL;		//DIGIN CH8			pulsante comando discesa rulliera 1
+	R1P1_Pls_R1_Up		:BOOL;		//DIGIN CH9			pulsante comando salita rulliera 1
+	
+	R1P1_Lp_Eme_Ok		:BOOL;		//DIGOUT CH10			pulsante comando salita rulliera 1
+	R1P1_Lp_Marcia_On	:BOOL;		//DIGOUT CH11		pulsante comando salita rulliera 1
+	
+	
+	//PULSANTIERA R1P2
+	glo_dig_in_R1P2			AT %I*:ARRAY[1..64] OF BOOL;	
+	glo_dig_out_R1P2		AT %Q*:ARRAY[1..64] OF BOOL;	
+
+	R1P2_Pls_Ciclo_Singolo	:BOOL;		//DIGIN CH1			pulsante richiesta ciclo singolo rulliera R1
+	R1P2_Pls_Ciclo_Continuo	:BOOL;		//DIGIN CH2			pulsante richiesta ciclo continuo rulliera R1
+	R1P2_Pls_Marcia			:BOOL;
+	R1P2_Pls_Marcia_Off		:BOOL;
+	
+	//PULSANTIERA R1P3
+	glo_dig_in_R1P3			AT %I*:ARRAY[1..64] OF BOOL;	
+	glo_dig_out_R1P3		AT %Q*:ARRAY[1..64] OF BOOL;	
+
+	R1P3_Pls_Ciclo_Singolo	:BOOL;		//DIGIN CH1			pulsante richiesta ciclo singolo rulliera R1
+	R1P3_Pls_Ciclo_Continuo	:BOOL;		//DIGIN CH2			pulsante richiesta ciclo continuo rulliera R1
+	R1P3_Pls_Marcia			:BOOL;
+	R1P3_Pls_Marcia_Off		:BOOL;
+
+	//PULSANTIERA R1P4
+	glo_dig_in_R1P4			AT %I*:ARRAY[1..64] OF BOOL;	
+	glo_dig_out_R1P4		AT %Q*:ARRAY[1..64] OF BOOL;	
+
+	R1P4_Pls_Ciclo_Singolo	:BOOL;		//DIGIN CH1			pulsante richiesta ciclo singolo rulliera R1
+	R1P4_Pls_Ciclo_Continuo	:BOOL;		//DIGIN CH2			pulsante richiesta ciclo continuo rulliera R1
+	R1P4_Pls_Marcia			:BOOL;
+	R1P4_Pls_Marcia_Off		:BOOL;
+	
+	
+	//PULSANTIERA R1P5
+	glo_dig_in_R1P5			AT %I*:ARRAY[1..64] OF BOOL;	
+	glo_dig_out_R1P5		AT %Q*:ARRAY[1..64] OF BOOL;	
+
+	R1P5_Pls_Ciclo_Singolo	:BOOL;		//DIGIN CH1			pulsante richiesta ciclo singolo rulliera R1
+	R1P5_Pls_Ciclo_Continuo	:BOOL;		//DIGIN CH2			pulsante richiesta ciclo continuo rulliera R1
+	R1P5_Pls_Marcia			:BOOL;
+	R1P5_Pls_Marcia_Off		:BOOL;
+	
+	
+	//PULSANTIERA R1P6
+	glo_dig_in_R1P6			AT %I*:ARRAY[1..64] OF BOOL;	
+	glo_dig_out_R1P6		AT %Q*:ARRAY[1..64] OF BOOL;	
+
+	R1P6_Pls_Ciclo_Singolo	:BOOL;		//DIGIN CH1			pulsante richiesta ciclo singolo rulliera R1
+	R1P6_Pls_Ciclo_Continuo	:BOOL;		//DIGIN CH2			pulsante richiesta ciclo continuo rulliera R1
+	R1P6_Pls_Marcia			:BOOL;
+	R1P6_Pls_Marcia_Off		:BOOL;
+
+
+	//SEMAFORO
+	RCT_Semaforo					:ES_SEMAFORO;	//IOLINK CH5		SEMAFORO DV2530
+
+	//colori
+	// 1 blu
+	// 2 verde
+	// 3 azzurro
+	// 4 rosso
+	// 5 violetto
+	// 6 arancione
+	
+	RCT_Semaforo_Led_1			:USINT;				//led 1 il piu in basso
+	RCT_Semaforo_Led_2			:USINT;				//led 1 il piu in basso
+	RCT_Semaforo_Led_3			:USINT;				//led 1 il piu in basso
+	RCT_Semaforo_Led_4			:USINT;				//led 1 il piu in basso
+	RCT_Semaforo_Led_5			:USINT;				//led 1 il piu in basso
+
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//CIABATTA C3CD1
+	glo_dig_in_C3CD1		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C3CD1		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_WcState_C3CD1		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C3CD1 		AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_C3CD1		AT %I*:ARRAY[1..64] OF USINT;	//3:OP
+
+
+	C4_Ftc4_Presenza_Ingresso		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C4_Ftc5_Presenza_Ingresso		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C4_Ftc6_Presenza_Ingresso		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C4_Ftc7_Presenza_Ingresso		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C4_Ftc4_Presenza_Uscita			:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C4_Ftc5_Presenza_Uscita			:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C4_Ftc6_Presenza_Uscita			:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C4_Ftc7_Presenza_Uscita			:BOOL;		//DIGIN CH0			fotocellula presenza trave
+		
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//CIABATTA C3CD2
+	glo_dig_in_C3CD2		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C3CD2		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_WcState_C3CD2		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C3CD2			AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_C3CD2		AT %I*:ARRAY[1..64] OF USINT;	//3:OP
+	
+	
+	C4_Ftc1_Presenza_Ingresso		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C4_Ftc2_Presenza_Ingresso		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C4_Ftc3_Presenza_Ingresso		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C4_Ftc1_Presenza_Uscita			:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C4_Ftc2_Presenza_Uscita			:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C4_Ftc3_Presenza_Uscita			:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	
+	
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//CIABATTA C3CO1
+	glo_dig_in_C3CO1		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C3CO1		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_WcState_C3CO1		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C3CO1 		AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_C3CO1		AT %I*:ARRAY[1..64] OF USINT;	//3:OP	
+	
+	
+	R2_Paletta_Presenza_Pezzo:BOOL;
+	
+	//PULSANTIERA C4P1
+	glo_dig_in_C4P1			AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C4P1		AT %Q*:ARRAY[1..64] OF BOOL;		
+	
+	C4P1_Sel_Chiave		:BOOL;		//DIGIN CH1			selettore a chiave
+	C4P1_Pls_Marcia		:BOOL;		//DIGIN CH1			pulsante marcia
+	C4P1_Rst_Eme		:BOOL;		//DIGIN CH2			pulsante ripristino emergenza
+	
+	C4P1_Pls_C3_Fw		:BOOL;		//DIGIN CH3			pulsante comando avanti catenaria 3
+	C4P1_Pls_C3_Bk		:BOOL;		//DIGIN CH4			pulsante comando indietro catenaria 3	
+
+	C4P1_Pls_C4_Fw		:BOOL;		//DIGIN CH3			pulsante comando avanti catenaria 4
+	C4P1_Pls_C4_Bk		:BOOL;		//DIGIN CH4			pulsante comando indietro catenaria 4	
+	
+	C4P1_Lp_Eme_Ok		:BOOL;		//DIGOUT CH9		lampada emergenza ok
+	C4P1_Lp_Marcia_On	:BOOL;		//DIGOUT CH10		lampoada marcia on		
+	
+	
+	//PULSANTIERA C4PO1
+	glo_dig_in_C4PO1			AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C4PO1		AT %Q*:ARRAY[1..64] OF BOOL;		
+	
+	C4PO1_Pls_R2_Fw		:BOOL;		//DIGIN CH3			pulsante comando avanti rulliera 2
+	C4PO1_Pls_R2_Bk		:BOOL;		//DIGIN CH4			pulsante comando indietro rulliera 2	
+	C4PO1_Pls_R2_Dw		:BOOL;		//DIGIN CH5			pulsante comando discesa rulliera 2
+	C4PO1_Pls_R2_Up		:BOOL;		//DIGIN CH6			pulsante comando salita rulliera 2
+	
+	C4PO1_Pls_C5_Fw		:BOOL;		//DIGIN CH3			pulsante comando avanti catenaria 5
+	C4PO1_Pls_C5_Bk		:BOOL;		//DIGIN CH4			pulsante comando indietro catenaria 5	
+	
+	C4PO1_Pls_C6_Fw		:BOOL;		//DIGIN CH3			pulsante comando avanti catenaria 6
+	C4PO1_Pls_C6_Bk		:BOOL;		//DIGIN CH4			pulsante comando indietro catenaria 6	
+
+	
+	C3CO1_Ev1_Soffio_Px	: BOOL;
+	C3CO1_Ev2_Soffio_Px	: BOOL;
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//CIABATTA C5CO1
+	glo_dig_in_C5CO1		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C5CO1		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_WcState_C5CO1		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C25O21		AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_C5CO1		AT %I*:ARRAY[1..64] OF USINT;	//3:OP	
+
+	C5CO1_Ventola_Motore_Rotaz_C3	:BOOL;		//DIGOUT CH3			ventola motore	
+	C5CO1_Ventola_Motore_Rotaz_C5	:BOOL;		//DIGOUT CH3			ventola motore
+	C5CO1_Ventola_Motore_Rotaz_C6	:BOOL;		//DIGOUT CH3			ventola motore
+	
+	C5CO1_Ventola_Motore_Rotaz_C4	:BOOL;		//DIGOUT CH3			ventola motore
+	
+	C5CO1_Ev1_Soffio_Px_C5_C6				:BOOL;			//DIGOUT CH0			ev soffio sensori catenaria 3
+	C5CO1_Ev2_Soffio_Px_C5_C6				:BOOL;			//DIGOUT CH1			ev soffio sensori catenaria 3
+	C5CO1_Ev3_Soffio_Px_C5_C6				:BOOL;			//DIGOUT CH2			ev soffio sensori catenaria 3
+
+	
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//CIABATTA C5CO2
+	glo_dig_in_C5CO2		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C5CO2		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_WcState_C5CO2		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C25O2 		AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_C5CO2		AT %I*:ARRAY[1..64] OF USINT;	//3:OP	
+	
+	
+	R3_Paletta_Presenza_Pezzo:BOOL;
+	
+	//PULSANTIERA R3P1
+	glo_dig_in_R3P1			AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_R3P1		AT %Q*:ARRAY[1..64] OF BOOL;	
+	
+	R3P1_Pls_Singolo	:BOOL;
+	R3P1_Pls_Marcia		:BOOL;
+	R3P1_Pls_Infinito	:BOOL;
+	
+	
+	//PULSANTIERA R3P2
+	glo_dig_in_R3P2			AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_R3P2		AT %Q*:ARRAY[1..64] OF BOOL;	
+	
+	R3P2_Pls_Singolo	:BOOL;
+	R3P2_Pls_Marcia		:BOOL;
+	R3P2_Pls_Infinito	:BOOL;
+	
+	
+	//PULSANTIERA R3P3
+	glo_dig_in_R3P3			AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_R3P3		AT %Q*:ARRAY[1..64] OF BOOL;	
+
+    R3P3_Pls_Singolo	:BOOL;
+	R3P3_Pls_Marcia		:BOOL;
+	R3P3_Pls_Infinito	:BOOL;
+
+	
+	//PULSANTIERA R3P4	
+	glo_dig_in_R3P4			AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_R3P4		AT %Q*:ARRAY[1..64] OF BOOL;	
+
+	R3P4_Sel_Chiave		:BOOL;		//DIGIN CH1			selettore a chiave
+	R3P4_Pls_Marcia		:BOOL;		//DIGIN CH1			pulsante marcia
+	R3P4_Rst_Eme		:BOOL;		//DIGIN CH2			pulsante ripristino emergenza
+
+
+	R3P4_Pls_C5_Fw		:BOOL;		//DIGIN CH3			pulsante comando avanti catenaria 5
+	R3P4_Pls_C5_Bk		:BOOL;		//DIGIN CH4			pulsante comando indietro catenaria 5	
+
+	R3P4_Pls_C6_Fw		:BOOL;		//DIGIN CH3			pulsante comando avanti catenaria 5
+	R3P4_Pls_C6_Bk		:BOOL;		//DIGIN CH4			pulsante comando indietro catenaria 5	
+		
+	R3P4_Pls_R3_Fw		:BOOL;		//DIGIN CH3			pulsante comando avanti rulliera 3
+	R3P4_Pls_R3_Bk		:BOOL;		//DIGIN CH4			pulsante comando indietro rulliera 3
+	R3P4_Pls_R3_Dw		:BOOL;		//DIGIN CH5			pulsante comando discesa rulliera 3
+	R3P4_Pls_R3_Up		:BOOL;		//DIGIN CH6			pulsante comando salita rulliera 3
+	
+	R3P4_Lp_Eme_Ok		:BOOL;		//DIGOUT CH9		lampada emergenza ok
+	R3P4_Lp_Marcia_On	:BOOL;		//DIGOUT CH10		lampoada marcia on		
+	
+	C5CO2_Ventola_Motore_Rotaz_R3	:BOOL;		//DIGOUT CH3			ventola motore
+	C5CO2_Ventola_Motore_Rotaz_R2	:BOOL;		//DIGOUT CH3			ventola motore	
+	
+	
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//CIABATTA C5CD1
+	glo_dig_in_C5CD1		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C5CD1		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_WcState_C5CD1		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C25D1 		AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_C5CD1		AT %I*:ARRAY[1..64] OF USINT;	//3:OP		
+
+	C5_Ftc1_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C5_Ftc2_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C5_Ftc3_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	
+	C6_Ftc1_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C6_Ftc2_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C6_Ftc3_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	
+	R3_Ftc1_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	R3_Ftc2_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	
+		
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//CIABATTA C5CD2
+	glo_dig_in_C5CD2		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C5CD2		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_WcState_C5CD2		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C25D2 		AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_C5CD2		AT %I*:ARRAY[1..64] OF USINT;	//3:OP		
+	
+	R3_Px_Rulliera_UP		:BOOL;		//DIGIN CH4			proximity rulliera alta
+	R3_Px_Rulliera_DW		:BOOL;		//DIGIN CH5			proximity rulliera bassa
+	
+	C5_Ftc4_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	
+	C6_Ftc4_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C6_Ftc5_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	
+	R3_Ftc3_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	R3_Ftc4_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	R3_Ftc5_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	
+	
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//CIABATTA C5CD3
+	glo_dig_in_C5CD3		AT %I*:ARRAY[1..64] OF BOOL;
+	glo_dig_out_C5CD3		AT %Q*:ARRAY[1..64] OF BOOL;	
+	glo_WcState_C5CD3		AT %I*:ARRAY[1..64] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C25D3 		AT %I*:ARRAY[1..64] OF UINT;	//8:OP
+	glo_IOLState_C5CD3		AT %I*:ARRAY[1..64] OF USINT;	//3:OP			
+	
+	
+	R2_Px_Rulliera_UP		:BOOL;		//DIGIN CH4			proximity rulliera alta
+	R2_Px_Rulliera_DW		:BOOL;		//DIGIN CH5			proximity rulliera bassa
+	
+	C5_Ftc5_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C5_Ftc6_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	
+	C6_Ftc6_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	C6_Ftc7_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+
+	R3_Ftc6_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+	R3_Ftc7_Presenza		:BOOL;		//DIGIN CH0			fotocellula presenza trave
+
+	C3_Ftc_Pezzo_Scaricato_C5	:BOOL;		//DIGIN CH0			fotocellula presenza trave
+		
+	R2_Px_Presenza_Pezzo	:BOOL;		//DIGIN CH0			paletta presenza trave
+	
+	R1_Paletta_Presenza_Pezzo:BOOL;
+
+	
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//SAFETY C2_CS1
+	glo_dig_in_C2_CS1		AT %I*:ARRAY[1..8] OF BOOL;
+	glo_dig_out_C2_CS1		AT %Q*:ARRAY[1..8] OF BOOL;	
+	glo_WcState_C2_CS1		AT %I*:ARRAY[1..8] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C2_CS1 		AT %I*:ARRAY[1..8] OF UINT;	//8:OP
+	glo_IOLState_C2_CS1		AT %I*:ARRAY[1..8] OF USINT;	//3:OP	
+
+	C1P1_Pls_Eme				:BOOL;		//C2_CS1 CH2
+	R1P1_Pls_Eme				:BOOL;		//C2_CS1 CH8
+	R1P2_Pls_Eme				:BOOL;		//C2_CS1 CH4
+	R1P3_Pls_Eme				:BOOL;		//C2_CS2 CH6
+
+
+	//SAFETY C2_CS2
+	glo_dig_in_C2_CS2		AT %I*:ARRAY[1..8] OF BOOL;
+	glo_dig_out_C2_CS2		AT %Q*:ARRAY[1..8] OF BOOL;	
+	glo_WcState_C2_CS2		AT %I*:ARRAY[1..8] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C2_CS2 		AT %I*:ARRAY[1..8] OF UINT;	//8:OP
+	glo_IOLState_C2_CS2		AT %I*:ARRAY[1..8] OF USINT;	//3:OP
+
+	R1P4_Pls_Eme				:BOOL;		//C2_CS2 CH2
+	R1P5_Pls_Eme				:BOOL;		//C2_CS2 CH4
+	R1P6_Pls_Eme				:BOOL;		//C2_CS2 CH6
+	
+
+	//SAFETY C5_CS1
+	glo_dig_in_C5_CS1		AT %I*:ARRAY[1..8] OF BOOL;
+	glo_dig_out_C5_CS1		AT %Q*:ARRAY[1..8] OF BOOL;	
+	glo_WcState_C5_CS1		AT %I*:ARRAY[1..8] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C5_CS1		AT %I*:ARRAY[1..8] OF UINT;	//8:OP
+	glo_IOLState_C5_CS1		AT %I*:ARRAY[1..8] OF USINT;	//3:OP
+
+	
+	R3P4_Pls_Eme				:BOOL;		//C5_CS1 CH8
+	R3P1_Pls_Eme				:BOOL;		//C5_CS1 CH2
+	R3P2_Pls_Eme				:BOOL;		//C5_CS1 CH4
+	R3P3_Pls_Eme				:BOOL;		//C5_CS1 CH6
+
+	
+	//SAFETY C3_CS1
+	glo_dig_in_C3_CS1		AT %I*:ARRAY[1..8] OF BOOL;
+	glo_dig_out_C3_CS1		AT %Q*:ARRAY[1..8] OF BOOL;	
+	glo_WcState_C3_CS1		AT %I*:ARRAY[1..8] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_C3_CS1		AT %I*:ARRAY[1..8] OF UINT;	//8:OP
+	glo_IOLState_C3_CS1		AT %I*:ARRAY[1..8] OF USINT;	//3:OP
+	
+	C4P1_Pls_Eme				:BOOL;		//C3_CS1 CH2
+
+	//SAFETY BOX18
+	glo_dig_in_BOX18		AT %I*:ARRAY[1..8] OF BOOL;
+	glo_dig_out_BOX18		AT %Q*:ARRAY[1..8] OF BOOL;	
+	glo_WcState_BOX18		AT %I*:ARRAY[1..8] OF BOOL;	//0:Valid, 1:Invalid
+	glo_State_BOX18			AT %I*:ARRAY[1..8] OF UINT;	//8:OP
+	glo_IOLState_C3_BOX18		AT %I*:ARRAY[1..8] OF USINT;	//3:OP	
+	
+	PB_Eme_Macinatore			:BOOL;		//COX18 EP1908 CH2
+	
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+	//plc Valmec
+	RD_plc_Valmec		AT %I*:INT;
+	WR_plc_Valmec		AT %Q*:INT;	
+
+
+	WR_Req_Start_Aspirazione	AT %Q*:BYTE;
+	RD_Aspirazione_RUN			AT %I*:BYTE;
+
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+//ciclo svuotamento Hdd
+	PB_Start_Svuotamento_Hundegger			:BOOL;
+	I_Macinatore_Run						:BOOL;
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)	
+
+	//TWINSAFE
+
+	TS_R1P1_Pls_Eme		AT %I*:BOOL;	//STATO FUNGO EMERGENZA da TWINSAFE
+	TS_C1P1_Pls_Eme		AT %I*:BOOL;	//STATO FUNGO EMERGENZA da TWINSAFE
+
+	TS_R1P1_Reset_Eme			AT %Q*:BOOL;	//STATO BOTTONE RIARMO a TWINSAFE
+	TS_R1P1_Reset_Eme_2			AT %Q*:BOOL;	//STATO BOTTONE RIARMO a TWINSAFE
+	TS_C1P1_Reset_Eme			AT %Q*:BOOL;	//STATO BOTTONE RIARMO a TWINSAFE
+	
+	
+	
+	
+(*****************************************************************)	
+(*****************************************************************)	
+(*****************************************************************)		
+END_VAR
+	
+
+VAR_GLOBAL PERSISTENT
+	
+	C1_Ciclo_Polmone_Sel					:BOOL;
+	C4_Ciclo_Rientro_Man_Sel				:BOOL;
+	
+	C1_Ribalta_Rot_0_Position				:LREAL;
+	C1_Ribalta_Rot_Fw_Position				:LREAL;	
+	C1_Ribalta_Rot_Bk_Position				:LREAL;
+	
+	C1_Solleva_Up_Position					:LREAL;	
+	C1_Solleva_Dw_Position					:LREAL;
+	C1_Solleva_Dw_Position_Rotaz			:LREAL;
+	C1_Solleva_DW_Position_FI_Rotaz			:LREAL;
+	
+	Catenarie_Acc_Set				: LREAL;
+	Catenarie_Dec_Set				: LREAL;
+	
+	Rulliere_Acc_Set				: LREAL;
+	Rulliere_Dec_Set				: LREAL;
+	
+	R1_Rotazione_Jog_Speed			: LREAL;
+	R1_Solleva_Jog_Speed			: WORD;
+	C1_Rotazione_Jog_Speed			: LREAL;
+	C1_Rotazione_Jog_Speed_2		: LREAL;
+
+	C2_Rotazione_Jog_Speed			: LREAL;
+	C2_Rotazione_Jog_Speed_2		: LREAL;
+	C1_Ribalta_Jog_Speed			: LREAL;
+	C1_Solleva_Jog_Speed			: LREAL;
+	
+	C3_Rotazione_Jog_Speed			: LREAL;
+	C4_Rotazione_Jog_Speed			: LREAL;
+	C5_Rotazione_Jog_Speed			: LREAL;
+	C6_Rotazione_Jog_Speed			: LREAL;
+	
+	R3_Rotazione_Jog_Speed			: LREAL;
+	R3_Solleva_Jog_Speed			: WORD;
+	
+	R2_Rotazione_Jog_Speed			: LREAL;
+	R2_Solleva_Jog_Speed			: WORD;
+	
+
+
+	Ribaltamento_C1_Quota_Preset_Enc	:LREAL;
+	Sollevamento_C1_Quota_Preset_Enc	:LREAL;
+	
+	Catenaria_C2_Quota_Preset_Enc			:LREAL;
+	Rotazione_C1_Quota_Preset_Enc			:LREAL;
+	Rulliera_R1_Quota_Preset_Enc			:LREAL;
+	Rulliera_R3_Quota_Preset_Enc			:LREAL;
+	Rulliera_R2_Quota_Preset_Enc			:LREAL;
+	Rotazione_C3_Quota_Preset_Enc			:LREAL;
+	Rotazione_C5_Quota_Preset_Enc			:LREAL;
+	Rotazione_C6_Quota_Preset_Enc			:LREAL;
+	
+	C1_Gap_Pezzi							:REAL;
+	C2_Gap_Pezzi							:REAL;
+	C3_Gap_Pezzi							:REAL;
+	C5_Gap_Pezzi							:REAL;
+	C6_Gap_Pezzi							:REAL;
+	C1_Spazio_Libero_Start_Scarico			:REAL;
+	
+	R1_Lunghezza_Rulliera					:REAL;
+	R2_Step_Value							:REAL;
+	R3_Lunghezza_Rulliera					:REAL;
+	C3_Lunghezza_Catenaria					:REAL;
+	C4_Lunghezza_Catenaria					:REAL;
+	C5_Lunghezza_Catenaria					:REAL;
+		
+	C1_Ribalta_Step_Fw						:REAL;
+	C1_Ribalta_Step_Bk						:REAL;
+	
+	R2_Step_800_1000mm						:REAL;
+	R2_Step_1001_2000mm						:REAL;
+	R2_Step_2001_3500mm						:REAL;
+	R2_Step_3500_9800mm						:REAL;
+	R2_Step_9800mm							:REAL;
+		
+	
+	Buffer_C1						: ARRAY [0..20] OF dut_Dati_Pezzo;
+	Buffer_C2						: ARRAY [0..20] OF dut_Dati_Pezzo;
+	Buffer_R1						: ARRAY [0..20] OF dut_Dati_Pezzo;
+	Buffer_R2						: ARRAY [0..20] OF dut_Dati_Pezzo;
+	Buffer_R3						: ARRAY [0..20] OF dut_Dati_Pezzo;
+	Buffer_C3						: ARRAY [0..20] OF dut_Dati_Pezzo;
+	Buffer_C4						: ARRAY [0..20] OF dut_Dati_Pezzo;
+	Buffer_C5						: ARRAY [0..20] OF dut_Dati_Pezzo;
+	Buffer_C6						: ARRAY [0..20] OF dut_Dati_Pezzo;
+	
+	Tempo_Svuotamento_Hdd			:TIME;
+	
+	R1_Set_Rotazione			:INT;   //99=no rotazione - 1=rot. avanti - 2=rot. indietro - 3=doppia rotazione
+	R1_Set_Larghezza			:REAL;
+	R1_Set_Altezza				:REAL;
+	R1_Set_Lunghezza			:REAL;
+	R1_Set_Lato_Scarico			:INT;	//1=destra - 2=sinistra
+	R1_Set_Nr_Ricetta			:INT;
+	
+END_VAR
+
+(*---------------------------------------------------------------------------   ------------------------------------------------------*)	
+(*---------------------------------------------------------------------------   ------------------------------------------------------*)
+(*---------------------------------------------------------------------------   ------------------------------------------------------*)
+
+
+
+	]]></Declaration>
+  </GVL>
+</TcPlcObject>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <DUT Name="ES_ALARM" Id="{ea1e1d25-90ac-483e-8488-74c395af2e10}">
+    <Declaration><![CDATA[TYPE ES_ALARM :
+	STRUCT
+		
+		Enable			:BOOL;
+		Active			:BOOL;
+		Reset			:BOOL;
+		tmr				:TON;
+		pt				:INT:=7;		//secondi
+		
+	END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

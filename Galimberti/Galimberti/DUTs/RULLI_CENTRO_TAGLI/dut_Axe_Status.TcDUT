@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <DUT Name="dut_Axe_Status" Id="{6c727b75-530e-4805-b444-ea12ed05d04c}">
+    <Declaration><![CDATA[TYPE dut_Axe_Status :
+STRUCT
+	
+		Operational				:BOOL;
+		Homed					:BOOL;
+		NotMoving				:BOOL;
+		InPositionArea			:BOOL;
+		InTargetPosition		:BOOL;
+		Protected_				:BOOL;
+		ErrorPropagationDelayed	:BOOL;
+		HasBeenStopped			:BOOL;
+		HasJob					:BOOL;
+		PositiveDirection		:BOOL;
+		NegativeDirection		:BOOL;
+		HomingBusy				:BOOL;
+		ConstantVelocity		:BOOL;
+		Compensating			:BOOL;
+		ExtSetPointGenEnabled	:BOOL;
+		PhasingActive			:BOOL;
+		ExternalLatchValid		:BOOL;
+		NewTargetPos			:BOOL;
+		ContinuousMotion		:BOOL;
+		ControlLoopClosed		:BOOL;
+		CamTableQueued			:BOOL;
+		CamDataQueued			:BOOL;
+		CamScalingPending		:BOOL;
+		CmdBuffered				:BOOL;
+		PTPmode					:BOOL;
+		SoftLimitMinExceeded	:BOOL;
+		SoftLimitMaxExceeded	:BOOL;
+		DriveDeviceError		:BOOL;
+		MotionCommandsLocked	:BOOL;
+		IoDataInvalid			:BOOL;
+		Error					:BOOL;
+
+
+
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>
